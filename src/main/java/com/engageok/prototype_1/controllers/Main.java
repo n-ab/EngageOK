@@ -1,5 +1,7 @@
 package com.engageok.prototype_1.controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.engageok.prototype_1.models.User;
 import com.engageok.prototype_1.services.UserService;
 import com.engageok.prototype_1.validator.UserValidator;
-import com.engageok.prototype_1.models.User;
 
 // com.engageok.prototype_1.
 @Controller
@@ -58,5 +60,19 @@ public class Main {
 				return "redirect:/login";
 			}
 		}
+	}
+	@RequestMapping("/")
+	public String home(Principal principal, Model model) {
+		String email = principal.getName();
+        User loggedUser = userService.findByEmail(email);
+        model.addAttribute("loggedUser", loggedUser);
+//////// In theory I think we could do any simple Query on the JSP using just the loggedUser. example: loggedUser.getOrganizations()
+        System.out.println("The ID of person logged in is: " + loggedUser.getId());
+        System.out.println("loggedUser object is: " + loggedUser);
+        System.out.println("loggedUser getOrganizations() is: " + loggedUser.getOrganizations());
+        
+//////// In the forEach, we could just do "<c:forEach items="${loggedUser.getOrganizations()}" var="organization">"
+
+		return "dashboard.jsp";
 	}
 }

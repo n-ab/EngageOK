@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+#container{
+	border: 1px solid black; 	
+	padding: 15px;
+	background-color: lightgrey;
+	width: auto;
+	height: auto;
+}
+h1 {
+	color: blue;
+}
+#logoutButton{
+	float: right;
+}
+
+#organizations{
+	border: 1px dotted maroon;
+	color: maroon;
+	display: inline-block;
+}
+#issue_areas{
+	border: 1px dotted orange;
+	color: orange;
+	display: inline-block;
+	
+}
+#events{
+	border: 1px dotted darkblue;
+	color: darkblue;
+	display: inline-block;
+}

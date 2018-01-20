@@ -25,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
     protected void configure(HttpSecurity http) throws Exception {
         http.
             authorizeRequests()
-                .antMatchers("/style/**", "/registration").permitAll()
+                .antMatchers("/CSS/**", "/registration").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
